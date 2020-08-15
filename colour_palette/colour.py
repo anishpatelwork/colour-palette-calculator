@@ -40,5 +40,8 @@ class Colour:
         hues = [(h+d) % 1 for d in (-d, d)]
         for hue in hues:
             r, g, b = colorsys.hls_to_rgb(hue, l, s)
-            colours.append(Colour(int(round(r*255)), int(round(g*255)), int(round(b*255))))
+            colour = Colour(int(round(r*255)),
+                            int(round(g*255)),
+                            int(round(b*255)))
+            colours.append(colour)
         return colours
