@@ -22,3 +22,21 @@ def test_complementary_colour():
     yellow = Colour(255,255,0)
     complementary_to_blue = blue.complementary_colour()
     assert yellow == complementary_to_blue
+
+
+def test_triadic_colours():
+    red = Colour(255,0,0)
+    blue = Colour(0,0,255)
+    green = Colour(0,255,0)
+    red_triadic_colours = red.triadic_colours()
+    assert red in red_triadic_colours
+    assert blue in red_triadic_colours
+    assert green in red_triadic_colours
+    
+    test_colour = Colour(49,206,143)
+    test_colour_triadic_colours = test_colour.triadic_colours()
+    expected_result_1 = Colour(206,143,49)
+    expected_result_2 = Colour(143,49,206)
+    assert test_colour in test_colour_triadic_colours
+    assert expected_result_1 in test_colour_triadic_colours
+    assert expected_result_2 in test_colour_triadic_colours
