@@ -1,4 +1,5 @@
 import colorsys
+import math
 
 
 class Colour:
@@ -7,14 +8,20 @@ class Colour:
     MAX_RGB_VALUE = 255
 
     def __init__(self, r, g, b):
-        self.r = r
-        self.g = g
-        self.b = b
+        self.r = int(r)
+        self.g = int(g)
+        self.b = int(b)
 
     def __eq__(self, o):
         if isinstance(o, Colour):
             return self.r == o.r and self.g == o.g and self.b == o.b
         return False
+
+    def distance_to_colour(self, other_colour):
+        r_distance = self.r - other_colour.r
+        g_distance = self.g - other_colour.g
+        b_distance = self.b - other_colour.b
+        return math.sqrt(math.pow(r_distance, 2) + math.pow(g_distance, 2) + math.pow(b_distance, 2))
 
     def complementary_colour(self):
         r = self.MAX_RGB_VALUE - self.r
