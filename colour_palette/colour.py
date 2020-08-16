@@ -45,3 +45,14 @@ class Colour:
                             int(round(b*255)))
             colours.append(colour)
         return colours
+
+    def split_complementary(self):
+        colours = []
+        colours.append(self)
+        complementary = self.complementary_colour()
+        complementary_analogous = complementary.analogous_colours()
+        complementary_analogous = [
+            colour for colour in complementary_analogous
+            if not colour == complementary]
+        colours.extend(complementary_analogous)
+        return colours

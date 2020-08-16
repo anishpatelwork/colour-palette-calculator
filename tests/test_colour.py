@@ -52,3 +52,14 @@ def test_analogous_colours():
     assert test_colour in analogous_colours
     assert expected_result_1 in analogous_colours
     assert expected_result_2 in analogous_colours
+
+
+def test_split_complementary_colours():
+    test_colour = Colour(0, 0, 255)
+    expected_result_1 = Colour(255, 128, 0)
+    expected_result_2 = Colour(128, 255, 0)
+    test_split_complementary_colours = test_colour.split_complementary()
+    assert len(test_split_complementary_colours) == 3
+    assert test_colour in test_split_complementary_colours
+    assert expected_result_1 in test_split_complementary_colours
+    assert expected_result_2 in test_split_complementary_colours

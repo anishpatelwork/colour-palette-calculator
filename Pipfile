@@ -7,6 +7,7 @@ verify_ssl = true
 pylint = "*"
 pytest = "*"
 rope = "*"
+autopep8 = "*"
 
 [packages]
 colour_palette = {editable = true,path = "."}
