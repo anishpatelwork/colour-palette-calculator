@@ -17,3 +17,12 @@ class PenCollection:
                 closest_distance = distance
                 closest_pen = pen
         return closest_pen
+
+    def find_complementary_pen(self, pen=None, colour=None):
+        if pen is not None:
+            complementary_colour = pen.colour.complementary_colour()
+            return self.closest_pen_to_colour(complementary_colour)
+        elif colour is not None:
+            return self.closest_pen_to_colour(colour)
+        else:
+            raise ValueError("Must pass in either a colour or pen")
