@@ -29,6 +29,20 @@ def test_find_complementary_pen():
     assert lamp_black_complementary == peach
 
 
+def test_find_analogous_pens():
+    pen_collection = PenCollection(_get_test_pen_collection())
+    peach = Pen("Tombow", "Peach - 020", Colour(248, 243, 185))
+    analogous_pens = pen_collection.find_analogous_pens(peach)
+    assert len(analogous_pens) == 3
+
+
+def test_find_split_complementary_pens():
+    pen_collection = PenCollection(_get_test_pen_collection())
+    scarlet = Pen("Tombow", "Scarlet - 933", Colour(246, 115, 37))
+    split_complementary_pens = pen_collection.find_split_complementary_pens(scarlet)
+    assert len(split_complementary_pens(3))
+    
+
 def test_find_pen_by_pen_number():
     pen_collection = PenCollection(_get_test_pen_collection())
     found_pen = pen_collection.find_pen_by_pen_number("062")

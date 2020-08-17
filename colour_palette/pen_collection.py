@@ -27,6 +27,22 @@ class PenCollection:
         else:
             raise ValueError("Must pass in either a colour or pen")
 
+    def find_analogous_pens(self, pen):
+        analogous_pens = []
+        analogous_colours = pen.colour.analogous_colours()
+        for colour in analogous_colours:
+            closest_pen = self.closest_pen_to_colour(colour)
+            analogous_pens.append(closest_pen)
+        return analogous_pens
+
+    def find_split_complementary_pens(self, pen):
+        split_complementary_pens = []
+        split_complementary_colours = pen.colour.split_complementary()
+        for colour in split_complementary_colours:
+            closest_pen = self.closest_pen_to_colour(colour)
+            split_complementary_pens.append(closest_pen)
+        return split_complementary_pens
+
     def find_pen_by_pen_number(self, pen_number):
         for pen in self.pens:
             if pen_number in pen.name:
