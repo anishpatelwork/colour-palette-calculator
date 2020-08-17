@@ -29,6 +29,13 @@ def test_find_complementary_pen():
     assert lamp_black_complementary == peach
 
 
+def test_find_pen_by_pen_number():
+    pen_collection = PenCollection(_get_test_pen_collection())
+    found_pen = pen_collection.find_pen_by_pen_number("062")
+    pale_yellow = Pen("Tombow", "Pale Yellow - 062", Colour(254, 245, 108))
+    assert found_pen == pale_yellow
+
+
 def _get_test_pen_collection():
     return [
         {"brand": "Tombow", "name": "Peach - 020", "rgb": "248,243,185"},

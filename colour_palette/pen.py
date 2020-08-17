@@ -16,3 +16,6 @@ class Pen:
         if isinstance(o, Pen):
             return self.brand == o.brand and self.name == o.name and self.colour == o.colour
         return False
+
+    def __str__(self):
+        return f'{self.brand}, {self.name}'

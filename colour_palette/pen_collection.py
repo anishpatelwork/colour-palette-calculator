@@ -26,3 +26,9 @@ class PenCollection:
             return self.closest_pen_to_colour(colour)
         else:
             raise ValueError("Must pass in either a colour or pen")
+
+    def find_pen_by_pen_number(self, pen_number):
+        for pen in self.pens:
+            if pen_number in pen.name:
+                return pen
+        raise ValueError("Pen does not exist in collection")
