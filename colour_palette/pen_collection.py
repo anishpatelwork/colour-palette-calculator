@@ -1,4 +1,5 @@
 from .pen import Pen
+import json
 
 
 class PenCollection:
@@ -48,3 +49,7 @@ class PenCollection:
             if pen_number in pen.name:
                 return pen
         raise ValueError("Pen does not exist in collection")
+
+    def toJSON(self):
+        return json.dumps(self.pens, default=lambda o: o.__dict__, sort_keys=True,
+                          indent=4)
