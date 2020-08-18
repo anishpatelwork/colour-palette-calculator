@@ -40,8 +40,8 @@ def test_find_split_complementary_pens():
     pen_collection = PenCollection(_get_test_pen_collection())
     scarlet = Pen("Tombow", "Scarlet - 933", Colour(246, 115, 37))
     split_complementary_pens = pen_collection.find_split_complementary_pens(scarlet)
-    assert len(split_complementary_pens(3))
-    
+    assert len(split_complementary_pens) == 3
+
 
 def test_find_pen_by_pen_number():
     pen_collection = PenCollection(_get_test_pen_collection())
