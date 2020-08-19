@@ -12,6 +12,13 @@ class Colour:
         self.g = int(g)
         self.b = int(b)
 
+    def serialize(self):
+        return {
+            'r': self.r,
+            'g': self.g,
+            'b': self.b
+        }
+
     def __eq__(self, o):
         if isinstance(o, Colour):
             return self.r == o.r and self.g == o.g and self.b == o.b

@@ -1,8 +1,8 @@
 import flask
 from flask import jsonify
+from flask import request
 import json
 from colour_palette.pen_collection import PenCollection
-import jsonpickle
 
 
 app = flask.Flask(__name__)
@@ -16,20 +16,37 @@ with open(r'C:\code\colour-palette-calculator\colour_palette\data\tombow.json') 
 
 @app.route('/pens', methods=['GET'])
 def pen_collection():
-    return pens.toJSON()
+    pen_number = request.args.get('number')
+    if pen_number is not None:
+        pen = pens.find_pen_by_pen_number(pen_number)
+        return jsonify(pen.serialize())
+    return jsonify([p.serialize() for p in pens.pens])
 
 
-@app.route('/pen/<pen_number>/complementary')
-def complementary_pen(pen_number):
-    pen = pens.find_pen_by_pen_number(pen_number)
+@app.route('/pens/<id>/complementary')
+def complementary_pen(id):    
+    pen = pens.get_pen_by_id(int(id))
     complementary_pen = pens.find_complementary_pen(pen)
-    return jsonify(penname=complementary_pen.name, brand=complementary_pen.brand)
+    return jsonify(complementary_pen.serialize())
 
 
-# @app.route('/pen/<pen_number>/split-complementary')
-# def split_complementary(pen_number):
-#     pen = pens.find_pen_by_pen_number(pen_number)
-#     return jsonify(pens.find_split_complementary_pens(pen))
+@app.route('/pens/<id>')
+def pen_details(id):
+    pen = pens.get_pen_by_id(int(id))
+    return jsonify(pen.serialize())
+
+
+@app.route('/pens/<id>/split-complementary')
+def split_complementary(id):
+    pen = pens.get_pen_by_id(int(id))
+    return jsonify([p.serialize() for p in pens.find_split_complementary_pens(pen)])
+
+
+@app.route('/pens/<id>/analogous')
+def analogous_pens(id):
+    pen = pens.get_pen_by_id(int(id))
+    analogous = pens.find_analogous_pens(pen)
+    return jsonify([p.serialize() for p in analogous])
 
 
 app.run()

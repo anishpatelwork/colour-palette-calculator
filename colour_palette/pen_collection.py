@@ -1,13 +1,14 @@
 from .pen import Pen
-import json
 
 
 class PenCollection:
 
     def __init__(self, initialisation_collection):
         self.pens = []
+        i = 1
         for p in initialisation_collection:
-            self.pens.append(Pen(p["brand"], p["name"], rgb=p["rgb"]))
+            self.pens.append(Pen(i, p["brand"], p["name"], rgb=p["rgb"]))
+            i = i+1
 
     def closest_pen_to_colour(self, colour):
         closest_distance = self.pens[0].colour.distance_to_colour(colour)
@@ -50,6 +51,8 @@ class PenCollection:
                 return pen
         raise ValueError("Pen does not exist in collection")
 
-    def toJSON(self):
-        return json.dumps(self.pens, default=lambda o: o.__dict__, sort_keys=True,
-                          indent=4)
+    def get_pen_by_id(self, id):
+        for pen in self.pens:
+            if id == pen.id:
+                return pen
+        raise ValueError("Pen does not exist in collection")
