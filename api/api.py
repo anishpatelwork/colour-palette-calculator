@@ -25,7 +25,8 @@ def pen_collection():
 
 @app.route('/pens/<id>/complementary')
 def complementary_pen(id):
-    complementary_pen = pens.pens[int(id)]
+    pen = pens.pens[int(id)]
+    complementary_pen = pens.find_complementary_pen(pen)
     return jsonify(complementary_pen.serialize())
 
 
