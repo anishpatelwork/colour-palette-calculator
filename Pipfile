@@ -12,7 +12,6 @@ autopep8 = "*"
 [packages]
 colour_palette = {editable = true,path = "."}
 flask = "*"
-jsonpickle = "*"
 
 [requires]
 python_version = "3.8"

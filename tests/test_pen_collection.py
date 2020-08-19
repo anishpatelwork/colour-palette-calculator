@@ -17,13 +17,13 @@ def test_find_closest_pen_to_colour():
 
 def test_find_complementary_pen():
     pen_collection = PenCollection(_get_test_pen_collection())
-    chinese_red = Pen(856, "Tombow", "Chinese Red - 856", Colour(235, 40, 49))
+    chinese_red = Pen("Tombow", "Chinese Red - 856", Colour(235, 40, 49))
     complementary_pen = pen_collection.find_complementary_pen(pen=chinese_red)
-    turquoise = Pen(443, "Tombow", "Turquoise - 443", Colour(0, 175, 219))
+    turquoise = Pen( "Tombow", "Turquoise - 443", Colour(0, 175, 219))
     assert complementary_pen == turquoise
 
-    lamp_black = Pen(25, "Tombow", "Lamp Black - N25", Colour(0, 1, 24))
-    peach = Pen(20, "Tombow", "Peach - 020", Colour(248, 243, 185))
+    lamp_black = Pen("Tombow", "Lamp Black - N25", Colour(0, 1, 24))
+    peach = Pen("Tombow", "Peach - 020", Colour(248, 243, 185))
     lamp_black_complementary = pen_collection.find_complementary_pen(
         pen=lamp_black)
     assert lamp_black_complementary == peach
@@ -31,14 +31,14 @@ def test_find_complementary_pen():
 
 def test_find_analogous_pens():
     pen_collection = PenCollection(_get_test_pen_collection())
-    peach = Pen(20, "Tombow", "Peach - 020", Colour(248, 243, 185))
+    peach = Pen("Tombow", "Peach - 020", Colour(248, 243, 185))
     analogous_pens = pen_collection.find_analogous_pens(peach)
     assert len(analogous_pens) == 3
 
 
 def test_find_split_complementary_pens():
     pen_collection = PenCollection(_get_test_pen_collection())
-    scarlet = Pen(933, "Tombow", "Scarlet - 933", Colour(246, 115, 37))
+    scarlet = Pen("Tombow", "Scarlet - 933", Colour(246, 115, 37))
     split_complementary_pens = pen_collection.find_split_complementary_pens(scarlet)
     assert len(split_complementary_pens) == 3
 
@@ -46,15 +46,8 @@ def test_find_split_complementary_pens():
 def test_find_pen_by_pen_number():
     pen_collection = PenCollection(_get_test_pen_collection())
     found_pen = pen_collection.find_pen_by_pen_number("062")
-    pale_yellow = Pen(62, "Tombow", "Pale Yellow - 062", Colour(254, 245, 108))
+    pale_yellow = Pen("Tombow", "Pale Yellow - 062", Colour(254, 245, 108))
     assert found_pen == pale_yellow
-
-
-def test_get_pen_by_id():
-    pen_collection = PenCollection(_get_test_pen_collection())
-    found_pen = pen_collection.get_pen_by_id(1)
-    peach = Pen(1, "Tombow", "Peach - 020", Colour(248, 243, 185))
-    assert found_pen == peach
 
 
 def _get_test_pen_collection():

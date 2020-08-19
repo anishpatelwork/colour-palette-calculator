@@ -3,8 +3,7 @@ from .colour import Colour
 
 class Pen:
 
-    def __init__(self, id, brand, name, colour=None, rgb=None):
-        self.id = id
+    def __init__(self, brand, name, colour=None, rgb=None):        
         self.brand = brand
         self.name = name
         if colour is not None:
@@ -15,7 +14,6 @@ class Pen:
 
     def serialize(self):
         return {
-            'id': self.id,
             'brand': self.brand,
             'name': self.name,
             'colour': self.colour.serialize()

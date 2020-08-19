@@ -4,16 +4,16 @@ from .pen import Pen
 class PenCollection:
 
     def __init__(self, initialisation_collection):
-        self.pens = []
-        i = 1
+        self.pens = {}
+        i = 0
         for p in initialisation_collection:
-            self.pens.append(Pen(i, p["brand"], p["name"], rgb=p["rgb"]))
+            self.pens[i] = Pen(p["brand"], p["name"], rgb=p["rgb"])            
             i = i+1
 
     def closest_pen_to_colour(self, colour):
         closest_distance = self.pens[0].colour.distance_to_colour(colour)
         closest_pen = self.pens[0]
-        for pen in self.pens:
+        for pen in self.pens.values():
             distance = pen.colour.distance_to_colour(colour)
             if distance < closest_distance:
                 closest_distance = distance
@@ -46,13 +46,7 @@ class PenCollection:
         return split_complementary_pens
 
     def find_pen_by_pen_number(self, pen_number):
-        for pen in self.pens:
+        for pen in self.pens.values():
             if pen_number in pen.name:
-                return pen
-        raise ValueError("Pen does not exist in collection")
-
-    def get_pen_by_id(self, id):
-        for pen in self.pens:
-            if id == pen.id:
                 return pen
         raise ValueError("Pen does not exist in collection")
