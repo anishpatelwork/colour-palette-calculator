@@ -1,5 +1,6 @@
 import colorsys
 import math
+import webcolors
 
 
 class Colour:
@@ -23,6 +24,9 @@ class Colour:
         if isinstance(o, Colour):
             return self.r == o.r and self.g == o.g and self.b == o.b
         return False
+
+    def hex(self):
+        return webcolors.rgb_to_hex((self.r, self.g, self.b))
 
     def distance_to_colour(self, other_colour):
         r_distance = self.r - other_colour.r

@@ -3,12 +3,14 @@ from flask import jsonify
 from flask import request
 import json
 from colour_palette.pen_collection import PenCollection
+from pathlib import Path
 
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-with open(r'C:\code\colour-palette-calculator\colour_palette\data\tombow.json') as json_file:
+path = Path(__file__).parent / "../colour_palette/data/tombow.json"
+with path.open() as json_file:
     print(json_file)
     data = json.load(json_file)
     pens = PenCollection(data)
@@ -49,4 +51,4 @@ def analogous_pens(id):
     return jsonify([p.serialize() for p in analogous])
 
 
-app.run()
+app.run(host='0.0.0.0')

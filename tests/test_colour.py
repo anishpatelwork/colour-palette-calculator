@@ -63,3 +63,18 @@ def test_split_complementary_colours():
     assert test_colour in test_split_complementary_colours
     assert expected_result_1 in test_split_complementary_colours
     assert expected_result_2 in test_split_complementary_colours
+
+
+def test_rgb_to_hex():
+    black = Colour(0, 0, 0)
+    assert black.hex() == '#000000'
+    white = Colour(255, 255, 255)
+    assert white.hex().lower() == '#FFFFFF'.lower()
+    red = Colour(255, 0, 0)
+    assert red.hex().lower() == '#FF0000'.lower()
+    blue = Colour(0, 255, 0)
+    assert blue.hex().lower() == '#00FF00'.lower()
+    green = Colour(0, 0, 255)
+    assert green.hex().lower() == '#0000FF'.lower()
+    silver = Colour(192, 192, 192)
+    assert silver.hex().lower() == '#C0C0C0'.lower()
