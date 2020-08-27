@@ -13,7 +13,8 @@ if __name__ == "__main__":
     print(f'Looking for {pen_number}')
     pen = pens.find_pen_by_pen_number(pen_number)
     print(f'Chosen Pen {pen}')
-    choice = int(input("Enter Find Complementary Pen (1), Find Analogous Pens (2), Find Split Complementary Pens(3)"))
+    choice = int(input(
+        "Enter Find Complementary Pen (1), Find Analogous Pens (2), Find Split Complementary Pens(3)"))
     if choice == 1:
         complementary_pen = pens.find_complementary_pen(pen)
         print(f'Chosen pen {pen}, Complementary Pen {complementary_pen}')
@@ -24,4 +25,5 @@ if __name__ == "__main__":
     elif choice == 3:
         split_complementary_pens = pens.find_split_complementary_pens(pen)
         for split_complementary_pen in split_complementary_pens:
-            print(f'Chosen pen {pen}, Split complementary Pen {split_complementary_pen}')
+            print(
+                f'Chosen pen {pen}, Split complementary Pen {split_complementary_pen}')
